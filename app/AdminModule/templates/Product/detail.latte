@@ -1,0 +1,337 @@
+{block content}
+
+    
+    <div class="row">
+    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa fa-table fa-fw "></i> 
+                Katalog
+            <span>> 
+                <a n:href="default">Produkty</a> > {$title}
+            </span>
+        </h1>
+    </div>
+</div>
+            
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget well" id="wid-id-3" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
+                <!-- widget options:
+                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                data-widget-colorbutton="false"
+                data-widget-editbutton="false"
+                data-widget-togglebutton="false"
+                data-widget-deletebutton="false"
+                data-widget-fullscreenbutton="false"
+                data-widget-custombutton="false"
+                data-widget-collapsed="true"
+                data-widget-sortable="false"
+
+                -->
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+                    <h2>Default Tabs with border </h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+                    <!-- widget content -->
+                    <div class="widget-body">
+                        {form productForm class => 'smart-form'}
+                        
+                        <hr class="simple">
+                        
+                        <ul id="myTab1" class="nav nav-tabs bordered">
+                            <li class="active">
+                                <a href="#s1" data-toggle="tab">Obecné</a>
+                            </li>
+                            <li>
+                                <a href="#s2" data-toggle="tab">Cenotvorba</a>
+                            </li>
+                            <li>
+                                <a href="#s3" data-toggle="tab">Obrázky</a>
+                            </li>
+                            <li>
+                                <a href="#s4" data-toggle="tab">Odkazy</a>
+                            </li>
+                            <li>
+                                <a href="#s5" data-toggle="tab">Volby</a>
+                            </li>
+                          
+                        </ul>
+
+                        <div id="myTabContent1" class="tab-content padding-10">
+                            <div class="tab-pane fade in active" id="s1">
+                                
+                                <fieldset>
+                                    <section>
+                                    
+                                        <div class="inline-group">
+                                            <label class="radio">
+                                           <input type="radio" name="activeYn" id="frm-productForm-activeYn-1" value="1" {if $product->activeYn == 1}checked{/if} >
+                                            <i></i>
+                                            Aktivní 
+                                            </label>
+                                            <label class="radio">
+                                            <input type="radio" name="activeYn" id="frm-productForm-activeYn-0" value="0" {if $product->activeYn == 0}checked{/if} >
+                                            <i></i>
+                                            Neaktivní
+                                            </label>
+                                            
+                                        </div>
+                                    
+                                    </section>
+                                    <section>
+                                        <label class="label">{label count /}</label>
+                                        <label class="input">
+                                        {input count , class => 'input-sm'}
+                                        </label>
+                                    </section>
+                                
+                                </fieldset>
+                                <ul class="nav nav-tabs">
+                                    {foreach $languages as $lang}
+                                    <li {if $iterator->first}class="active"{/if}>
+                                        <a href="#iss{$iterator->getCounter()}" data-toggle="tab">{$lang->symbol|upper}</a>
+                                    </li>
+                                    {/foreach}
+                                </ul>
+
+                                <div class="tab-content padding-10">
+                                    {foreach $languages as $lang}
+                                    <div class="tab-pane {if $iterator->first}active{/if}" id="iss{$iterator->getCounter()}" >
+                                        <section>
+                                            <label class="label"></label>
+                                            <label class="input">
+                                                
+                                            </label>
+                                            
+                                        </section>
+                                        <section>
+                                            <label class="label"><?php echo $_form[$lang->symbol]["name"]->getLabel() ?></label>
+                                            <label class="input">
+                                                <?php echo $_form[$lang->symbol]["name"]->getControl() ?>
+                                            </label>
+                                            
+                                        </section>
+                                        <section>
+                                            <label class="label"><?php echo $_form[$lang->symbol]["metaTitle"]->getLabel() ?></label>
+                                            <label class="input">
+                                                <?php echo $_form[$lang->symbol]["metaTitle"]->getControl() ?>
+                                            </label>
+                                            
+                                        </section>
+                                        <section>
+                                            <label class="label"><?php echo $_form[$lang->symbol]["metaKeywords"]->getLabel() ?></label>
+                                            <label class="input">
+                                                <?php echo $_form[$lang->symbol]["metaKeywords"]->getControl() ?>
+                                            </label>
+                                            
+                                        </section>
+                                        <section>
+                                            <label class="label"><?php echo $_form[$lang->symbol]["metaDescription"]->getLabel() ?></label>
+                                            <label class="input">
+                                                <?php echo $_form[$lang->symbol]["metaDescription"]->getControl() ?>
+                                            </label>
+                                            
+                                        </section>
+                                        <section>
+                                            <label class="label"><?php echo $_form[$lang->symbol]["seoUrl"]->getLabel() ?></label>
+                                            <label class="input">
+                                                <?php echo $_form[$lang->symbol]["seoUrl"]->getControl() ?>
+                                            </label>
+                                            
+                                        </section>
+                                        <section>
+                                            <label class="label"><?php echo $_form[$lang->symbol]["shortDescription"]->getLabel() ?></label>
+                                            <label class="textarea textarea-resizable ">                                      
+                                                <?php echo $_form[$lang->symbol]["shortDescription"]->getControl() ?>
+                                            </label>
+                                        </section>
+                                        <section>
+                                            <label class="label"><?php echo $_form[$lang->symbol]["description"]->getLabel() ?></label>
+                                            <label class="textarea textarea-resizable ">                                      
+                                                <?php echo $_form[$lang->symbol]["description"]->getControl() ?>
+                                            </label>
+                                        </section>
+                                    </div>
+                                    {/foreach}
+                                </div>
+                                
+                            </div>
+                            <div class="tab-pane fade" id="s2">
+                                <fieldset>
+                                    <section>
+                                        <label class="label">{label price /}</label>
+                                        <label class="input">
+                                            {input price}
+                                        </label>
+                                        
+                                    </section>
+                                    <section>
+                                        <label class="label">{label smallPrice /}</label>
+                                        <label class="input">
+                                            {input smallPrice}
+                                        </label>
+                                        
+                                    </section>
+                                    <section>
+                                        <label class="label">{label buyPrice /}</label>
+                                        <label class="input">
+                                            {input buyPrice}
+                                        </label>
+                                        
+                                    </section>
+                                </fieldset>
+                            </div>
+                            <div class="tab-pane fade" id="s3">
+                                
+                                <!-- <label class="input input-file" for="file">
+                                    <div class="button">
+                                        <input type="file" onchange="this.parentNode.nextSibling.value = this.value" name="file" width="40%">
+                                        Browse
+                                    </div>
+                                    <input type="text" readonly="" placeholder="Include some files">
+                                </label> -->
+                                <br><br>
+                                <!-- row -->
+                                <div class="row">
+                                    <span class="btn btn-success fileinput-button">
+                                        
+                                        <!-- The file input field used as target for the file upload widget -->
+                                        <input id="fileupload" type="file" name="files[]" multiple>
+                                    </span>
+                                    <br>
+                                    <br>
+                                    <!-- The global progress bar -->
+                                    <div id="progress" class="progress">
+                                        <div class="progress-bar progress-bar-success"></div>
+                                    </div>
+                                    <!-- SuperBox -->
+                                    <div class="superbox col-sm-12">
+                                        {if $product}
+                                        {foreach $product->getImages() as $image}
+                                        <div class="superbox-list">
+                                            <img src="{$image->getSource()->getImage(250,250)}" data-img="{$image->getSource()->getImage(800,800)}" alt="" title="" class="superbox-img">
+                                            <input type="hidden" name="upload_files[]" value="{$image->getSource()->getImage(250,250)}" >
+                                        </div>    
+                                        {/foreach}
+                                        {/if}
+                                        
+                                        
+                                        <div class="superbox-float"></div>
+                                        
+                                    </div>
+                                                                     
+                                    <div class="superbox-show" style="height:300px; display: none"></div> 
+
+                                </div>
+
+                                    <!-- end row -->
+
+                                
+                            </div>
+                            <div class="tab-pane fade" id="s4">
+
+
+
+                                <fieldset>
+                                <div class="form-group">
+                                    <label>Kategorie</label>
+                                    {input categories, class=>"select2 select2-offscreen"}
+                                </div>
+                                </fieldset>
+
+                                <fieldset>
+                                <div class="form-group">
+                                    <label>Výrobci</label>
+                                    {input manufacturers, class=>"select2 select2-offscreen"}
+                                </div>
+                                </fieldset>
+
+                                <fieldset>
+                                <div class="form-group">
+                                    <label>Dodavatelé</label>
+                                    {input suppliers, class=>"select2 select2-offscreen"}
+                                </div>
+                                </fieldset>
+                            </div>
+                            <div class="tab-pane fade" id="s5">
+                                <p>
+                                    Volby
+                                </p>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    {input upload_images}
+                    {input send, class=>'btn btn-primary'}
+                    <br><br>
+                    <!-- <div class="form-actions">
+                        <div class="btn btn-primary btn-lg">
+                            <i class="fa fa-save"></i>
+                            Uložit změny
+                        </div>
+                    </div> -->
+                    <!-- end widget content -->
+                    {/form}
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+{/block}
+
+{block javascript}
+<script src="/js/jquery.fileupload.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    $('#fileupload').fileupload({
+        url: {link uploadImage!},
+        dataType: 'json',
+        done: function (e, data) {
+            
+            $(".superbox").append("<div class='superbox-list'><img src='/upload/data/thumbnail/" + data.files[0].name + "' data-img='/upload/data/thumbnail/" + data.files[0].name + "' alt='' title='' class='superbox-img'></div><input type='hidden' name='upload_files[]' value='' > ");
+
+            $('input[name=upload_images]').val($('input[name=upload_images]').val() + ';' + data.files[0].name);
+
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+
+  });
+
+  </script>
+<script type="text/javascript">
+
+
+// load bootstrap-progress bar script
+
+    loadScript("/js/plugin/superbox/superbox.min.js", runSuperBox);
+
+
+    function runSuperBox() {
+        $('.superbox').SuperBox();
+        
+    }
+</script>
+{/block}

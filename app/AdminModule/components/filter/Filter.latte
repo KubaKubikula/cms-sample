@@ -1,0 +1,116 @@
+<thead>
+    <tr>
+        {foreach $header as $headerItem}
+        <th {if is_array($headerItem) AND isset($headerItem["sort"])}class="sorting{if $sort == $headerItem["sort"]}_{$way|lower}{/if}" 
+            sort="{$headerItem["sort"]}" {/if} way="{$way}">
+            {if is_array($headerItem) AND isset($headerItem["name"])}{$headerItem["name"]}{else}{$headerItem}{/if}
+        </th>
+        {/foreach}
+        <th>Akce</th>
+    </tr>
+    {if $hasFilter}
+    
+    <tr class="second">
+        {foreach $header as $headerItem}
+
+        <td class="filterInputs">
+            {if isset($headerItem["filter"])}
+
+                {if isset($headerItem["type"]) AND $headerItem["type"] == "masscheck"}
+                    <label class="checkbox">
+                        <input type="checkbox" name="masscheck" class="checkbox-inline masscheck">
+                        <i></i>
+                    </label>
+                {else}
+                    <label class="input">
+                        <input type="text" name="{$headerItem["filter"]}" value="{if isset($data[$headerItem["filter"]])}{$data[$headerItem["filter"]]}{/if}" class="search_init">
+                    </label>
+                {/if}
+            {/if}
+        </td>
+        {/foreach}  
+        <input type="hidden" name="sort" value="{$sort}" />
+        <input type="hidden" name="way" value="{$way}" />  
+        <td>
+            
+            <a sorthref="{link filter!}" class="filter">Filtruj</a>
+        </td>
+    </tr>
+    
+    {/if}
+</thead>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+
+        $(".masscheck").click(function() {
+            
+            if($(this).is(":checked")) {
+                $("input[name=checkproduct]").prop("checked","checked");    
+            } else {
+                $("input[name=checkproduct]").removeAttr("checked");
+            }
+            
+
+        });
+
+
+        $(".sorting, .sorting_desc, .sorting_asc").click(function(){
+            
+            var sortItem = $(this).attr("sort");
+            var wayItem = $(this).attr("way");
+
+            var neco = "";
+
+            //alert($(this).attr("sorthref"));
+
+            $( ".filterInputs input" ).each(function() {
+                if($(this).val()) {
+                    neco = neco  + '<input type="text" name="' + $(this).attr("name") + '" value="' + $(this).val() + '" />';
+                }
+
+            });
+
+             var form = $('<form action="" method="post">' +
+            '<input type="text" name="way" value="' + wayItem + '" />' +
+            '<input type="text" name="sort" value="' + sortItem + '" />' +
+              neco +
+              '</form>');
+            $('body').append(form);  // This line is not necessary
+            $(form).submit();
+            
+        });
+
+        $(".filter").click(function(){
+
+            var neco = "";
+
+            var sortItem = $("input[name=sort]").val();
+            var wayItem = $("input[name=way]").val();
+
+            //alert($(this).attr("sorthref"));
+
+            $( ".filterInputs input" ).each(function() {
+                if($(this).val()) {
+                    neco = neco  + '<input type="text" name="' + $(this).attr("name") + '" value="' + $(this).val() + '" />';
+                }
+
+            });
+
+             var form = $('<form action="" method="post">' +
+              neco +
+              
+             '<input type="text" name="sort" value="' + sortItem + '" />' +
+              '</form>');
+            $('body').append(form);  // This line is not necessary
+            $(form).submit();
+            
+
+        })
+
+
+    });
+
+
+
+</script>

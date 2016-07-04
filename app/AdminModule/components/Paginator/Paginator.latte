@@ -1,0 +1,47 @@
+{if $paginator->pageCount > 1}
+{var $link = $ajax ? 'showPage!' : 'this'}
+<div class="dt-row dt-bottom-row">
+    <div class="row">
+        <div class="col-sm-4">
+            <div id="datatable_fixed_column_info" class="dataTables_info">Showing {$from} to {$to} of {$itemCount} entries</div>
+        </div>
+        <div class="col-sm-8 text-right">
+            <div class="dataTables_paginate paging_bootstrap">
+                <ul class="pagination">
+                    {if $paginator->isFirst()}
+                        <li class="prev disabled">
+                            <a href="#">Previous</a>
+                        </li>
+                    {else}
+                        <li class="prev disabled">
+                            <a href="{link $link, 'page' => $paginator->page - 1}" n:class="$ajax ? ajax">Previous</a>
+                        </li>
+                    {/if}
+                    {foreach $steps as $step}
+                    {if $step == $paginator->page}
+                        <li class="active">
+                            <a href="#">{$step}</a>
+                        </li>
+                    {else}
+                        <li>
+                            <a href="{link $link, 'page' => $step}" n:class="$ajax ? ajax" >{$step}</a>
+                        </li>
+                    {/if}
+                    {if $iterator->nextValue > $step + 1}<li class="disabled"><a href="#">…</a></li>{/if}
+                    {/foreach}
+                    {if $paginator->isLast()}
+                        <li class="next disabled">
+                            <a href="#">Next</a>
+                        </li>
+                    {else}
+                        <li class="next">
+                            <a href="{link $link, 'page' => $paginator->page + 1}" n:class="$ajax ? ajax">Next</a>
+                        </li>
+                    {/if}
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{/if}

@@ -1,0 +1,226 @@
+{if $show}
+<div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Faktura</h4>
+            </div>
+            
+            <div class="modal-body">
+
+                <!-- Widget ID (each widget will need unique ID)-->
+                            <div class="jarviswidget well jarviswidget-color-darken" id="wid-id-0" data-widget-sortable="false" data-widget-deletebutton="false" data-widget-editbutton="false" data-widget-colorbutton="false">
+                                <!-- widget options:
+                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+                
+                                data-widget-colorbutton="false"
+                                data-widget-editbutton="false"
+                                data-widget-togglebutton="false"
+                                data-widget-deletebutton="false"
+                                data-widget-fullscreenbutton="false"
+                                data-widget-custombutton="false"
+                                data-widget-collapsed="true"
+                                data-widget-sortable="false"
+                
+                                -->
+                                <header>
+                                    <span class="widget-icon"> <i class="fa fa-barcode"></i> </span>
+                                    <h2>Item #44761 </h2>
+                
+                                </header>
+                
+                                <!-- widget div-->
+                                <div>
+                
+                                    <!-- widget edit box -->
+                                    <div class="jarviswidget-editbox">
+                                        <!-- This area used as dropdown edit box -->
+                
+                                    </div>
+                                    <!-- end widget edit box -->
+                
+                                    <!-- widget content -->
+                                    <div class="widget-body no-padding">
+                
+                                        <div class="widget-body-toolbar">
+                
+                                            <div class="row">
+                
+                                                <div class="col-sm-4">
+                
+                                                    
+                                                </div>
+                
+                                                <div class="col-sm-8 text-align-right">
+                
+                                                    <div class="btn-group">
+                                                        <a href="javascript:void(0)" class="btn btn-sm btn-success"> <i class="fa fa-plus"></i> Tiskni </a>
+                                                    </div>
+                
+                                                </div>
+                
+                                            </div>
+                
+                                        </div>
+                
+                                        <div class="padding-10">
+                                            <br>
+                                            <div class="pull-left">
+                                                <img src="/img/logo-blacknwhite.png" width="150" height="32" alt="invoice icon">
+                
+                                                <address>
+                                                    <br>
+                                                    <strong>Vecinacesty s.r.o</strong>
+                                                    <br>
+                                                    čujkovova 29,
+                                                    <br>
+                                                    Ostrava, Czech republic
+                                                    <br>
+                                                    <abbr title="Phone">P:</abbr> (+420) 720 326 248
+                                                </address>
+                                            </div>
+                                            <div class="pull-right">
+                                                <h1 class="font-400">faktura</h1>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <br>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-sm-9">
+                                                    <h4 class="semi-bold">Rogers, Inc.</h4>
+                                                    <address>
+                                                        <strong>Mr. Simon Hedger</strong>
+                                                        <br>
+                                                        342 Mirlington Road,
+                                                        <br>
+                                                        Calfornia, CA 431464
+                                                        <br>
+                                                        <abbr title="Phone">P:</abbr> (467) 143-4317
+                                                    </address>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div>
+                                                        <div>
+                                                            <strong>INVOICE NO :</strong>
+                                                            <span class="pull-right"> #AA-454-4113-00 </span>
+                                                        </div>
+                
+                                                    </div>
+                                                    <div>
+                                                        <div class="font-md">
+                                                            <strong>INVOICE DATE :</strong>
+                                                            <span class="pull-right"> <i class="fa fa-calendar"></i> 15/02/13 </span>
+                                                        </div>
+                
+                                                    </div>
+                                                    <br>
+                                                    <div class="well well-sm  bg-color-darken txt-color-white no-border">
+                                                        <div class="fa-lg">
+                                                            Total Due :
+                                                            <span class="pull-right"> 4,972 USD** </span>
+                                                        </div>
+                
+                                                    </div>
+                                                    <br>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">QTY</th>
+                                                        <th>ITEM</th>
+                                                        
+                                                        <th>PRICE</th>
+                                                        <th>SUBTOTAL</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {foreach $products as $product}
+                                                    <tr>
+                                                        <td class="text-center"><strong>1</strong></td>
+                                                        <td><a href="javascript:void(0);">{$product->name}</a></td>
+                                                        <td>{$product->price}</td>
+                                                        <td>{$product->total}</td>
+                                                    </tr>
+                                                    {/foreach}
+                                                    <tr>
+                                                        <td colspan="3">Total</td>
+                                                        <td><strong>$4,400.00</strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">HST/GST</td>
+                                                        <td><strong>13%</strong></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                
+                                            <div class="invoice-footer">
+                
+                                                <div class="row">
+                
+                                                    <div class="col-sm-7">
+                                                        <div class="payment-methods">
+                                                            <h5>Payment Methods</h5>
+                                                            <img src="/img/invoice/paypal.png" width="64" height="64" alt="paypal">
+                                                            <img src="/img/invoice/americanexpress.png" width="64" height="64" alt="american express">
+                                                            <img src="/img/invoice/mastercard.png" width="64" height="64" alt="mastercard">
+                                                            <img src="/img/invoice/visa.png" width="64" height="64" alt="visa">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <div class="invoice-sum-total pull-right">
+                                                            <h3><strong>Total: <span class="text-success">$4,972 USD</span></strong></h3>
+                                                        </div>
+                                                    </div>
+                
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <p class="note">**To avoid any excess penalty charges, please make payments within 30 days of the due date. There will be a 2% interest charge per month on all late invoices.</p>
+                                                    </div>
+                                                </div>
+                
+                                            </div>
+                                        </div>
+                
+                                    </div>
+                                    <!-- end widget content -->
+                
+                                </div>
+                                <!-- end widget div -->
+                
+                            </div>
+                            <!-- end widget -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Cancel
+                </button>
+                
+                
+
+            </div>
+           
+        </div><!-- /.modal-content -->
+        
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#myModalEdit').modal('show') ;
+
+    $("input[name='save']").click(function(){
+        $("form").submit();
+    })
+});
+
+
+
+</script>
+{/if}
